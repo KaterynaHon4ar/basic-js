@@ -16,9 +16,21 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  * The result should be 9
  */
-function getMatrixElementsSum(/* matrix */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function getMatrixElementsSum(matrix) {
+  let arrayAmount = matrix[0].length;
+  let elementAmount = matrix.length;
+  let resultArr = Array.from({ length: arrayAmount }, () => []);
+  for (let col = 0; col < arrayAmount; col++) {
+    for (let row = 0; row < elementAmount; row++) {
+      if (matrix[row][col] === 0) {
+        break;
+      }
+      resultArr[col].push(matrix[row][col]);
+    }
+  }
+  return resultArr
+      .flat()
+      .reduce((acc, num) => acc + num, 0);
 }
 
 module.exports = {
